@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Configuration;
+using System.Linq;
 
 namespace QLThuVien.Helpers
 {
@@ -6,7 +7,10 @@ namespace QLThuVien.Helpers
     {
         public static bool CoQuyen(string tenChucNang, int maVaiTro)
         {
-            using (var db = new QuanLyThuVienDataContext())
+            string connStr = ConfigurationManager.ConnectionStrings["QLThuVienConn"].ConnectionString;
+
+            
+            using (var db = new QuanLyThuVienDataContext(connStr))
             {
                 var query = from pq in db.PhanQuyens
                             join cn in db.ChucNangs on pq.MaChucNang equals cn.MaChucNang
