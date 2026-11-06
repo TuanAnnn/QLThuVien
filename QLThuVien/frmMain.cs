@@ -8,7 +8,7 @@ namespace QLThuVien
     {
         public frmMain()
         {
-            InitializeComponent(); // Bắt buộc phải có để dựng giao diện
+            InitializeComponent(); 
         }
 
         private void frmMain_Load(object sender, EventArgs e)
@@ -18,23 +18,36 @@ namespace QLThuVien
 
         private void ApplyRBAC()
         {
-            // Duyệt tất cả Menu cấp 1 trên thanh MenuStrip
             if (menuStrip1 != null)
             {
                 foreach (ToolStripItem item in menuStrip1.Items)
                 {
-                    // Menu Hệ thống luôn hiển thị cho mọi tài khoản
                     if (item.Name == "menuHeThong") continue;
 
-                    // Phân quyền ẩn/hiện các menu theo Database
-                    item.Visible = PhanQuyenHelper.CoQuyen(item.Name, CurrentUser.MaVaiTro);
+                    string tenChucNang = "";
+                    if (item.Name == "menuQuanLyNguoiDung") tenChucNang = "Quản lý Tài khoản";
+                    else if (item.Name == "menuQuanLyVaiTro") tenChucNang = "Quản lý Tài khoản"; 
+                    else if (item.Name == "menuQuanLySach") tenChucNang = "Quản lý Sách";
+                    else if (item.Name == "menuQuanLyDocGia") tenChucNang = "Quản lý Độc giả";
+                    else if (item.Name == "menuLapPhieuMuon") tenChucNang = "Lập phiếu mượn";
+                    else if (item.Name == "menuBaoCao") tenChucNang = "Báo cáo - Thống kê";
+
+                   
+                    if (string.IsNullOrEmpty(tenChucNang))
+                    {
+                        item.Visible = true;
+                    }
+                    else
+                    {
+                        item.Visible = PhanQuyenHelper.CoQuyen(tenChucNang, CurrentUser.MaVaiTro);
+                    }
                 }
             }
         }
 
         private void menuHeThong_Click(object sender, EventArgs e)
         {
-            // Giữ lại hàm này để không bị gãy sự kiện trong Designer
+          
         }
 
         private void menuDoiMatKhau_Click(object sender, EventArgs e)

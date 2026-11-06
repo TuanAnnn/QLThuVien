@@ -6,7 +6,6 @@ namespace QLThuVien.Helpers
 {
     public static class SecurityHelper
     {
-        // Salt = TenDangNhap theo đúng quy định của M1
         public static string HashPassword(string rawPassword, NguoiDung user)
         {
             if (user == null || string.IsNullOrEmpty(user.TenDangNhap)) return string.Empty;
@@ -18,7 +17,7 @@ namespace QLThuVien.Helpers
                 StringBuilder builder = new StringBuilder();
                 foreach (byte b in bytes)
                 {
-                    builder.Append(b.ToString("x2"));
+                    builder.Append(b.ToString("X2"));
                 }
                 return builder.ToString();
             }

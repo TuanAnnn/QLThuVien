@@ -16,7 +16,7 @@ namespace QLThuVien
             InitializeComponent();
             userRepository = new NguoiDungRepository();
             Load += frmUserManagement_Load;
-            btnThem.Click += btnThem_Click;
+            
         }
 
         private void frmUserManagement_Load(object sender, EventArgs e)

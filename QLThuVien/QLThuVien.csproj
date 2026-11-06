@@ -76,9 +76,15 @@
     <Compile Include="frmRoleManagement.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmChangePassword.Designer.cs"><DependentUpon>frmChangePassword.cs</DependentUpon></Compile>
-    <Compile Include="frmUserManagement.Designer.cs"><DependentUpon>frmUserManagement.cs</DependentUpon></Compile>
-    <Compile Include="frmRoleManagement.Designer.cs"><DependentUpon>frmRoleManagement.cs</DependentUpon></Compile>
+    <Compile Include="frmChangePassword.Designer.cs">
+      <DependentUpon>frmChangePassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserManagement.Designer.cs">
+      <DependentUpon>frmUserManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRoleManagement.Designer.cs">
+      <DependentUpon>frmRoleManagement.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
@@ -153,10 +159,13 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="QLThuVien.mdf" />
-    <None Include="QLThuVien_log.ldf">
+    <Content Include="QLThuVien.mdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="QLThuVien_log.ldf">
       <DependentUpon>QLThuVien.mdf</DependentUpon>
-    </None>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">

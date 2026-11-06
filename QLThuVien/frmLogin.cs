@@ -21,27 +21,27 @@ namespace QLThuVien
             string username = txtTenDangNhap.Text.Trim();
             string password = txtMatKhau.Text;
 
-            // 1. Kiểm tra đầu vào
+            
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
             {
                 MessageBox.Show("Vui lòng nhập đầy đủ tên đăng nhập và mật khẩu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // 2. Lấy thông tin người dùng từ Database qua Repository của M1
+            
             NguoiDungRepository repo = new NguoiDungRepository();
             NguoiDung user = repo.GetByTenDangNhap(username);
 
-            // 3. Xác thực SHA-256 với Salt = TenDangNhap theo đúng quy định của M1
+           
             if (user != null && SecurityHelper.HashPassword(password, user) == user.MatKhau)
             {
-                // Lưu session đăng nhập
+               
                 CurrentUser.MaND = user.MaND;
                 CurrentUser.TenDangNhap = user.TenDangNhap;
                 CurrentUser.MaVaiTro = user.MaVaiTro ?? 0;
                 CurrentUser.HoTen = user.HoTen;
 
-                // Mở Form Main
+              
                 this.Hide();
                 frmMain main = new frmMain();
                 main.ShowDialog();
